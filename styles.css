@@ -13,6 +13,11 @@
     align-items: center;
   }
 
+  #banner {
+    width: 400px;
+    height: 130px;
+  }
+
   .container {
     width: 100%;
     max-width: 420px;
