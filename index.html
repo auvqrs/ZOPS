@@ -1,12 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOPS Anketa</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mali Bobi vs Luka Silni</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-    <h1>STRANICA JE U IZRADI...</h1>
+    <div class="container">
+    <h1>MALI BOBI vs LUKA SILNI</h1>
+    <p class="desc">Bogdan Ilić Baka Prase, najpopularniji jutjuber i influenser u Srbiji, pokrenuo je novi eksperimentalni projekat u okviru kojeg organizuje boks mečeve između domaćih influensera.</p>
+    <p class="desc">Ovaj sportski događaj će se održati uživo na mreži Kick.com 1. februara.</p>
+    <p class="desc">Centralni događaj večeri biće duel Luke Obradovića, poznatijeg kao Luka Silni, i Bobana Rajovića, tiktokera koji nastupa pod nadimkom Mali Bobi.</p>
+    <h1>GLASAJ! KO ĆE DA POBEDI?</h1>
+
+    <div class="arena">
+        <div class="blue" onclick="select('Mali Bobi')" id="blue">
+        <div class="fighter">
+            <img src="MaliBobi.png" alt="Mali Bobi">
+            <h2>Mali Bobi</h2>
+        </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="red" onclick="select('Luka Silni')" id="red">
+        <div class="fighter">
+            <img src="LukaSilni.png" alt="Luka Silni">
+            <h2>Luka Silni</h2>
+        </div>
+        </div>
+    </div>
+
+    <button id="voteBtn" onclick="vote()" disabled>Glasaj</button>
+    <div class="status" id="status"></div>
+    </div>
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+  const SUPABASE_URL = "https://khtyfpfvgdcjfaxklocv.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtodHlmcGZ2Z2RjamZheGtsb2N2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2MjMwMzIsImV4cCI6MjA4NTE5OTAzMn0.z5z8-mgF3jmEw439Ks7RYn063LQj2ir9jyMXbqilT-E";
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  let selectedWinner = null;
+  let hasVoted = localStorage.getItem("voted") === "true";
+
+  const blue = document.getElementById("blue");
+  const red = document.getElementById("red");
+  const voteBtn = document.getElementById("voteBtn");
+  const statusEl = document.getElementById("status");
+
+  if (hasVoted) {
+    voteBtn.disabled = true;
+    statusEl.textContent = "Već si glasao 👀";
+    blue.onclick = null;
+    red.onclick = null;
+  }
+
+  window.select = (winner) => {
+    if (hasVoted) return;
+
+    selectedWinner = winner;
+    voteBtn.disabled = false;
+
+    blue.classList.remove("selected");
+    red.classList.remove("selected");
+
+    winner === "Mali Bobi"
+      ? blue.classList.add("selected")
+      : red.classList.add("selected");
+  };
+
+  window.vote = async () => {
+    if (!selectedWinner || hasVoted) return;
+
+    hasVoted = true;
+    voteBtn.disabled = true;
+    statusEl.textContent = "Šaljemo glas...";
+
+    const { error } = await supabase
+      .from("votes")
+      .insert({ winner: selectedWinner });
+
+    if (error) {
+      hasVoted = false;
+      voteBtn.disabled = false;
+      statusEl.textContent = "Greška pri slanju glasa ❌";
+      return;
+    }
+
+    localStorage.setItem("voted", "true");
+    sessionStorage.setItem("voted", "true");
+
+    blue.onclick = null;
+    red.onclick = null;
+
+    statusEl.textContent = `Glas poslat za ${selectedWinner} ✅`;
+  };
+</script>
+
+
 </body>
 </html>
