@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muzika za Razglas - ZOPS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="banner">
+  <img src="zops_logo.png" alt="School Logo">
+  <span>Muzika - Anketa</span>
+</header>
+
+<main class="container">
+  <h1>🎵 Izbor Pesama za Razglas</h1>
+  <p class="subtitle">Zdravo! Ove nedelje glasate za muziku koja će se puštati u hodniku preko razglasa tokom odmora. Potrebna nam je vaša pomoć kako bismo izabrali najbolje pesme. Na spisku se nalazi 10 pesama, a možete lajkovati ili dislajkovati svih 10 pesama.</p>
+  <p class="subtitle">Ukoliko imate sopstveni predlog, na samom dnu stranice nalazi se prazno polje gde možete uneti svoje ideje.</p>
+  <p class="subtitle">Nažalost, pesme izvođača poput Bake Praseta, Jale Brata, Breskvice, Bube Corellija i sličnih nisu dozvoljene. Možete preporučiti bilo koju pesmu koja nije vulgarna, diskriminatorna ili neprikladna za školsko okruženje.</p>
+
+  <div class="songs-list">
+    <div class="song" data-song="song1">
+      <div class="song-top">
+        <span class="title">1 - 505 - Arctic Monkeys</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s1.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song2">
+      <div class="song-top">
+        <span class="title">2 - Čija si - Tose Proeski</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s2.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song3">
+      <div class="song-top">
+        <span class="title">3 - Olovna ruka - Baki B3</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s3.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song4">
+      <div class="song-top">
+        <span class="title">4 - Mirrors - Justin Timberlake</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s4.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song5">
+      <div class="song-top">
+        <span class="title">5 - Shape of You - Ed Sheeran</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s5.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song6">
+      <div class="song-top">
+        <span class="title">6 - Ti i ja - Senidah</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s6.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song7">
+      <div class="song-top">
+        <span class="title">7 - Replay - Senidah</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s7.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song8">
+      <div class="song-top">
+        <span class="title">8 - Popular - The weeknd</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s8.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song9">
+      <div class="song-top">
+        <span class="title">9 - Andjele - Vlado Georgiev</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s9.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+    <div class="song" data-song="song10">
+      <div class="song-top">
+        <span class="title">10 - Dodirni Mi Kolena - Zana</span>
+        <button class="play">▶</button>
+      </div>
+      <audio src="s10.mp3"></audio>
+      <input type="range" class="progress" value="0">
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+      <div class="votes">
+        <button class="like">👍 <span class="count-like">0</span></button>
+        <button class="dislike">👎 <span class="count-dislike">0</span></button>
+      </div>
+    </div>
+
+  </div>
+
+  <input id="custom" placeholder="Preporuci pesmu (nije obavezno)">
+  <button id="submit">Posalji preporuku</button>
+  <p id="msg"></p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.supabase = supabase.createClient(
+    'https://orhialsdenlufsbkgkwg.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yaGlhbHNkZW5sdWZzYmtna3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NTcyMzQsImV4cCI6MjA4NTUzMzIzNH0._pTg-_4MG1pLNIzNPvyIeWmpahZeBLhwABPSg871DTo'
+  );
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
