@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const { error } = await supabase.from('custom_songs').insert({ song_name: songName });
     if (!error) {
-      msg.textContent = '🎵 Your suggestion has been submitted!';
+      msg.textContent = '🎵 Vaša preporuka je uspešno poslata!';
       msg.style.color = 'green';
       customInput.value = '';
     } else {
-      msg.textContent = '❌ Failed to submit. Try again.';
+      msg.textContent = '❌ Greška pri slanju, pokušaj ponovo!';
       msg.style.color = 'red';
       console.error(error);
     }
