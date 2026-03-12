@@ -139,3 +139,68 @@ h1 {
 }
 
 
+/* =====================
+   INPUT POLJA (PREDMET I RAZLOG)
+===================== */
+#subject_input, 
+#reason_input {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit; /* Da textarea ne koristi sistemski font */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: block;
+}
+
+#subject_input {
+  margin-top: 28px;
+  margin-bottom: 12px; /* Razmak između dva polja */
+}
+
+#reason_input {
+  min-height: 120px; /* Visina polja za razlog */
+  resize: vertical; /* Dozvoljava korisniku da menja visinu, ali ne i širinu */
+}
+
+/* Efekat kada klikneš u polje */
+#subject_input:focus, 
+#reason_input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.1);
+}
+
+#subject_input::placeholder,
+#reason_input::placeholder {
+  color: #666;
+}
+
+/* =====================
+   SUBMIT BUTTON (Mala korekcija)
+===================== */
+#submit {
+  margin-top: 24px;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: none;
+  background: linear-gradient(135deg, #1db954, #169c46);
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+  box-shadow: 0 12px 30px rgba(29, 185, 84, 0.2);
+}
+
+#submit:hover {
+  filter: brightness(1.1);
+}
+
+#submit:active {
+  transform: scale(0.98);
+}
