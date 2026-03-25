@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Najbolji YouTuber - ZOPS</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,15 +13,14 @@
   <span>Najbolji Balkanski YouTuber</span>
 </header>
 
-<main class="container" style="max-width: 900px;">
+<main class="container main-voting-container">
   <h1>🏆 Izaberi svoj Top 5</h1>
   <p class="subtitle">
     Prevuci jutjubera u slot. Klikni na popunjen slot da ga vratiš na listu.
   </p>
 
   <div class="voting-section">
-    <div class="youtubers-grid" id="youtubersList">
-      </div>
+    <div class="youtubers-grid" id="youtubersList"></div>
 
     <div class="ranking-zone">
       <h3>Tvoj Izbor:</h3>
@@ -52,25 +50,25 @@
         <div class="drop-area">Prazno</div>
       </div>
       
-      <button id="submitVote">Potvrdi i Glasaj</button>
+      <div class="actions">
+        <button id="submitVote">Potvrdi i Glasaj</button>
+        <button id="viewResults" onclick="window.location.href='rezultati.html'">
+          📊 Vidi trenutne rezultate
+        </button>
+      </div>
       <p id="msg"></p>
-
-      <button id="viewResults" onclick="window.location.href='rezultati.html'" style="background: transparent; border: 1px solid var(--accent); color: var(--accent); margin-top: 10px;">
-        📊 Vidi trenutne rezultate
-      </button>
     </div>
   </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-  window.supabase = supabase.createClient(
-    'https://orhialsdenlufsbkgkwg.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yaGlhbHNkZW5sdWZzYmtna3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NTcyMzQsImV4cCI6MjA4NTUzMzIzNH0._pTg-_4MG1pLNIzNPvyIeWmpahZeBLhwABPSg871DTo'
-  );
+  // Inicijalizacija Supabase pre index.js
+  const supabaseUrl = 'https://orhialsdenlufsbkgkwg.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yaGlhbHNkZW5sdWZzYmtna3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NTcyMzQsImV4cCI6MjA4NTUzMzIzNH0._pTg-_4MG1pLNIzNPvyIeWmpahZeBLhwABPSg871DTo';
+  window.supabase = supabase.createClient(supabaseUrl, supabaseKey);
 </script>
-
-<script src="index.js"></script>
+<script src="./index.js"></script>
 
 </body>
 </html>
