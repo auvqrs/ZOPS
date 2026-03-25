@@ -1,5 +1,5 @@
 /* =====================
-   GLOBAL RESET & VARIABLES
+   GLOBAL RESET & VARS
 ===================== */
 * {
   box-sizing: border-box;
@@ -13,19 +13,17 @@
   --border: #222;
   --text: #ffffff;
   --muted: #9a9a9a;
-  --accent: #1db954;
-  --accent-hover: #1ed760;
-  --danger: #ff4d4d;
+  --accent: #1db954; /* Spotify zelena koju si koristio */
   --radius: 18px;
-  --font-main: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  --radius-sm: 10px;
 }
 
 body {
   margin: 0;
-  background: radial-gradient(1200px at 50% -20%, #1a1a1a, #000);
+  background: radial-gradient(1200px at 50% -20%, #141414, #000);
   color: var(--text);
-  font-family: var(--font-main);
-  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.4;
   min-height: 100vh;
 }
 
@@ -41,114 +39,173 @@ body {
   gap: 14px;
   padding: 14px 18px;
   background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); /* Safari support */
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 
-.banner img { height: 32px; }
-
-.banner span {
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: -0.2px;
-}
+.banner img { height: 38px; }
+.banner span { font-weight: 600; font-size: 15px; letter-spacing: 0.3px; }
 
 /* =====================
    MAIN CONTAINER
 ===================== */
 .container {
-  max-width: 520px;
+  max-width: 900px; /* Malo šire zbog dve kolone */
   margin: 0 auto;
-  padding: 32px 20px 120px;
-  animation: fadeUp 0.6s ease-out;
+  padding: 28px 16px 120px;
 }
 
-h1 {
-  font-size: 26px;
-  font-weight: 800;
-  margin: 0 0 8px 0;
-  letter-spacing: -0.5px;
+h1 { font-size: 24px; margin-bottom: 8px; text-align: center; }
+.subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; text-align: center; }
+
+/* =====================
+   VOTING LAYOUT
+===================== */
+.voting-section {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
 }
 
-.subtitle {
-  color: var(--muted);
-  font-size: 15px;
-  margin-bottom: 32px;
+@media (max-width: 768px) {
+  .voting-section { grid-template-columns: 1fr; }
 }
 
 /* =====================
-   FORM FIELDS
+   YOUTUBERS GRID (Levo)
 ===================== */
-input[type="text"],
-textarea {
+.youtubers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  background: var(--surface);
+  padding: 15px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.yt-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 12px 8px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: fadeUp 0.4s ease both;
+}
+
+.yt-card:hover {
+  border-color: var(--accent);
+  background: #1e1e1e;
+}
+
+.yt-card.selected {
+  opacity: 0.3;
+  pointer-events: none;
+  filter: grayscale(1);
+}
+
+/* =====================
+   RANKING ZONE (Desno)
+===================== */
+.ranking-zone {
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 90px;
+}
+
+.ranking-zone h3 {
+  font-size: 16px;
+  margin: 0 0 15px 0;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rank-slot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed #333;
+}
+
+.rank-slot span {
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 14px;
+  min-width: 15px;
+}
+
+.drop-area {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.drop-area.filled {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* =====================
+   BUTTON & MESSAGES
+===================== */
+#submitVote {
+  margin-top: 15px;
   width: 100%;
   padding: 16px;
-  margin-bottom: 16px;
   border-radius: var(--radius);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 15px;
-  font-family: inherit;
-  transition: all 0.2s ease;
-  display: block;
-}
-
-textarea {
-  min-height: 140px;
-  resize: vertical;
-}
-
-input:focus, 
-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: var(--surface-2);
-  box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.15);
-}
-
-::placeholder {
-  color: #555;
-}
-
-/* =====================
-   SUBMIT BUTTON
-===================== */
-#submit {
-  width: 100%;
-  padding: 18px;
-  margin-top: 12px;
-  border-radius: 40px; /* Fully rounded for the Spotify look */
   border: none;
-  background: var(--accent);
+  background: linear-gradient(135deg, #1db954, #169c46);
   color: #000;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.1s active, background 0.2s;
-  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.25);
+  box-shadow: 0 12px 30px rgba(29,185,84,0.2);
+  transition: transform 0.15s ease;
 }
 
-#submit:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
+#submitVote:active { transform: scale(0.97); }
 
-#submit:active {
-  transform: scale(0.97);
+#msg {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
 }
 
 /* =====================
    ANIMATIONS
 ===================== */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rank-slot.drag-over {
+  border: 1px solid var(--accent) !important;
+  background: rgba(29, 185, 84, 0.1) !important;
+}
+
+.error { color: #ff4444; }
+.success { color: #1db954; }
+
+table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ranking-results {
+  animation: fadeUp 0.5s ease both;
 }

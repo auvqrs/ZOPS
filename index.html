@@ -1,28 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muzika za Razglas - ZOPS</title>
+  <title>Najbolji YouTuber - ZOPS</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="banner">
-  <img src="zops_logo.png" alt="School Logo">
-  <span>Muzika - Anketa</span>
+  <img src="zops_logo.png" alt="ZOPS Logo">
+  <span>Najbolji Balkanski YouTuber</span>
 </header>
 
-<main class="container">
-  <h1>🏫 Školski Predmet - Anketa</h1>
-  <p class="subtitle">Da možeš da izbaciš jedan predmet iz škole, koji bi to bio i zašto?</p>
+<main class="container" style="max-width: 900px;">
+  <h1>🏆 Izaberi svoj Top 5</h1>
+  <p class="subtitle">
+    Prevuci jutjubera u slot. Klikni na popunjen slot da ga vratiš na listu.
+  </p>
 
-  <input type="text" id="subject_input" placeholder="Koji predmet bi izbacio/la?">
-  
-  <textarea id="reason_input" placeholder="Navedi razlog (zašto baš taj predmet?)"></textarea>
-  
-  <button id="submit">Pošalji odgovor</button>
-  <p id="msg"></p>
+  <div class="voting-section">
+    <div class="youtubers-grid" id="youtubersList">
+      </div>
+
+    <div class="ranking-zone">
+      <h3>Tvoj Izbor:</h3>
+      
+      <div class="rank-slot" id="slot-1">
+        <span>1.</span> 
+        <div class="drop-area">Prazno</div>
+      </div>
+
+      <div class="rank-slot" id="slot-2">
+        <span>2.</span> 
+        <div class="drop-area">Prazno</div>
+      </div>
+
+      <div class="rank-slot" id="slot-3">
+        <span>3.</span> 
+        <div class="drop-area">Prazno</div>
+      </div>
+
+      <div class="rank-slot" id="slot-4">
+        <span>4.</span> 
+        <div class="drop-area">Prazno</div>
+      </div>
+
+      <div class="rank-slot" id="slot-5">
+        <span>5.</span> 
+        <div class="drop-area">Prazno</div>
+      </div>
+      
+      <button id="submitVote">Potvrdi i Glasaj</button>
+      <p id="msg"></p>
+
+      <button id="viewResults" onclick="window.location.href='rezultati.html'" style="background: transparent; border: 1px solid var(--accent); color: var(--accent); margin-top: 10px;">
+        📊 Vidi trenutne rezultate
+      </button>
+    </div>
+  </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -32,7 +69,8 @@
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yaGlhbHNkZW5sdWZzYmtna3dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NTcyMzQsImV4cCI6MjA4NTUzMzIzNH0._pTg-_4MG1pLNIzNPvyIeWmpahZeBLhwABPSg871DTo'
   );
 </script>
-<script src="script.js"></script>
+
+<script src="index.js"></script>
 
 </body>
 </html>
