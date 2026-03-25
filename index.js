@@ -1,5 +1,4 @@
 // 1. Inicijalizacija - koristimo window.supabase definisan u HTML-u
-const supabase = window.supabase;
 
 const jutjuberi = [
     "Baka Prase", "Mudja", "Dex Rock", "SerbianGamesBL", "Choda", 
