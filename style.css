@@ -242,21 +242,61 @@ h1 {
   transform: scale(0.98);
 }
 
+/* Kontejner za dugmad da budu lepo poređana */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Stil za glavno dugme (Glasaj) - već imaš, ali čisto radi poređenja */
+#submitVote {
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--accent);
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submitVote:hover {
+    transform: scale(1.02);
+    background-color: #1ed760;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+}
+
+/* FIX ZA DUGME "VIDI REZULTATE" */
 #viewResults {
-  width: 100%;
-  padding: 12px;
-  background: transparent;
-  border: 1px solid #444;
-  color: #fff;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border 0.2s;
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    border: 2px solid var(--border); /* Počinje sa tamnim okvirom */
+    color: var(--text);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 #viewResults:hover {
-  border-color: var(--accent);
+    border-color: var(--accent); /* Okvir postaje zelen */
+    color: var(--accent);       /* Tekst postaje zelen */
+    background-color: rgba(29, 185, 84, 0.05); /* Blaga zelena pozadina */
+}
+
+#viewResults:active {
+    transform: scale(0.98);
 }
 
 #msg {
