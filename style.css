@@ -16,8 +16,8 @@
   --text: #ffffff;
   --muted: #a7a7a7;
   --accent: #1db954; /* Spotify Green */
-  --radius: 12px;
-  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-sm: 10px;
 }
 
 body {
@@ -36,47 +36,49 @@ body {
 .banner {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 24px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(15px);
+  padding: 14px 24px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
 
 .banner img {
-  height: 32px;
+  height: 30px;
 }
 
 .banner span {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  color: var(--accent);
 }
 
 /* =====================
    MAIN CONTAINER
 ===================== */
 .container {
-  max-width: 1000px !important; /* Forsira širinu za dve kolone na GitHub-u */
+  max-width: 1100px !important; /* Forsira širinu za Desktop na GitHub-u */
   margin: 0 auto;
-  padding: 40px 20px 100px;
+  padding: 40px 20px 120px;
 }
 
 h1 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 10px;
   text-align: center;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
   color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 32px;
+  font-size: 15px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
@@ -86,19 +88,8 @@ h1 {
 .voting-section {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 30px;
   align-items: flex-start;
-}
-
-/* Responzivnost za mobilni */
-@media (max-width: 850px) {
-  .voting-section {
-    flex-direction: column;
-  }
-  .ranking-zone {
-    width: 100% !important;
-    position: static !important;
-  }
 }
 
 /* =====================
@@ -107,225 +98,205 @@ h1 {
 .youtubers-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 12px;
   background: var(--surface);
   padding: 20px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  max-height: 70vh;
+  max-height: 75vh;
   overflow-y: auto;
 }
 
-/* Scrollbar stil */
-.youtubers-grid::-webkit-scrollbar {
-  width: 6px;
-}
-.youtubers-grid::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
-}
+/* Scrollbar */
+.youtubers-grid::-webkit-scrollbar { width: 6px; }
+.youtubers-grid::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
 .yt-card {
   background: var(--surface-2);
   border: 1px solid transparent;
-  padding: 14px 10px;
+  padding: 16px 10px;
   border-radius: var(--radius-sm);
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  cursor: grab;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   animation: fadeUp 0.4s ease both;
 }
 
 .yt-card:hover {
-  background: #282828;
+  background: #252525;
+  transform: translateY(-3px);
   border-color: #444;
-  transform: translateY(-2px);
 }
 
-.yt-card:active {
-  cursor: grabbing;
-  opacity: 0.6;
+/* Kada je kartica selektovana na dodir */
+.yt-card.selected {
+  border-color: var(--accent) !important;
+  background: rgba(29, 185, 84, 0.1);
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.2);
 }
 
 /* =====================
    RANKING ZONE (DESNO)
 ===================== */
 .ranking-zone {
-  width: 340px;
-  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  width: 360px;
+  background: #121212;
   padding: 24px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   position: sticky;
-  top: 80px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  top: 100px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
 .ranking-zone h3 {
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  text-align: center;
 }
 
 .rank-slot {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   background: rgba(255, 255, 255, 0.03);
-  margin-bottom: 10px;
-  padding: 14px;
+  margin-bottom: 12px;
+  padding: 16px;
   border-radius: var(--radius-sm);
   border: 1px dashed #333;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .rank-slot span {
   font-weight: 900;
   color: var(--accent);
-  font-size: 14px;
+  font-size: 16px;
+  width: 25px;
 }
 
 .drop-area {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
   flex: 1;
+  font-weight: 500;
 }
 
 .drop-area.filled {
   color: #fff;
   font-weight: 700;
-  cursor: pointer;
 }
 
-/* Drag over efekt */
 .rank-slot.drag-over {
-  border: 1px solid var(--accent);
-  background: rgba(29, 185, 84, 0.1);
+  border-color: var(--accent);
+  background: rgba(29, 185, 84, 0.15);
   transform: scale(1.02);
 }
 
 /* =====================
-   BUTTONS & STATUS
+   ACTIONS & BUTTONS
 ===================== */
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 #submitVote {
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   border-radius: 50px;
   border: none;
   background: var(--accent);
   color: #000;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition: all 0.3s ease;
 }
 
-#submitVote:hover {
+#submitVote:hover:not(:disabled) {
   background: #1ed760;
   transform: scale(1.02);
+  box-shadow: 0 5px 20px rgba(29, 185, 84, 0.4);
 }
 
-#submitVote:active {
-  transform: scale(0.98);
+#submitVote:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
 }
 
-/* Kontejner za dugmad da budu lepo poređana */
-.actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 25px;
-    width: 100%;
-}
-
-/* Stil za glavno dugme (Glasaj) - već imaš, ali čisto radi poređenja */
-#submitVote {
-    width: 100%;
-    padding: 16px;
-    border-radius: 50px;
-    border: none;
-    background-color: var(--accent);
-    color: #000;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#submitVote:hover {
-    transform: scale(1.02);
-    background-color: #1ed760;
-    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
-}
-
-/* FIX ZA DUGME "VIDI REZULTATE" */
 #viewResults {
-    width: 100%;
-    padding: 14px;
-    background-color: transparent;
-    border: 2px solid var(--border); /* Počinje sa tamnim okvirom */
-    color: var(--text);
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 #viewResults:hover {
-    border-color: var(--accent); /* Okvir postaje zelen */
-    color: var(--accent);       /* Tekst postaje zelen */
-    background-color: rgba(29, 185, 84, 0.05); /* Blaga zelena pozadina */
-}
-
-#viewResults:active {
-    transform: scale(0.98);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 #msg {
   margin-top: 15px;
   text-align: center;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  min-height: 20px;
 }
 
 /* =====================
-   TABELA REZULTATA
+   MOBILE OPTIMIZATION (600px i manje)
 ===================== */
-table {
-  width: 100%;
-  border-collapse: collapse;
+@media (max-width: 850px) {
+  .voting-section {
+    flex-direction: column;
+  }
+  .ranking-zone {
+    width: 100% !important;
+    position: static !important;
+    margin-top: 20px;
+  }
 }
 
-th {
-  text-align: left;
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  padding: 10px;
-  border-bottom: 1px solid var(--border);
-}
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 15px 120px !important;
+  }
+  
+  h1 { font-size: 26px; }
+  
+  .youtubers-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Dva velika u redu */
+    gap: 10px;
+    padding: 10px;
+    max-height: 50vh;
+  }
 
-td {
-  padding: 16px 10px;
-  border-bottom: 1px solid #1a1a1a;
+  .yt-card {
+    padding: 20px 10px;
+    font-size: 15px; /* Jasno vidljivo ime */
+    background: #1a1a1a;
+  }
+
+  .rank-slot {
+    padding: 20px 15px; /* Lakše za pritiskanje prstom */
+  }
 }
 
 /* =====================
